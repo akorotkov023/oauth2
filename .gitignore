@@ -18,6 +18,8 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+.idea/*
+migrations/
 
 ###> symfony/asset-mapper ###
 /public/assets/

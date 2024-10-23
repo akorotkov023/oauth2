@@ -1,3 +1,17 @@
+html,
 body {
-    background-color: skyblue;
+    height: 100%;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+    margin: auto; /* Centers the form horizontally */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    position: absolute; /* Positions the form absolutely */
+    top: 50%; /* Moves the top of the form to the middle of the screen */
+    left: 50%; /* Moves the left of the form to the middle of the screen */
+    transform: translate(-50%, -50%); /* Offsets the position to truly center it */
 }
