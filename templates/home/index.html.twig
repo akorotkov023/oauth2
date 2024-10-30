@@ -4,11 +4,29 @@
 
 {% block body %}
 
-    <main class="form-signin w-100 m-auto">
-        <form action="{{ path('app_discord_connect') }}" method="post">
-            <input type="hidden" name="token" value="{{ csrf_token('discord-auth') }}">
-            <button class="btn btn-primary w-100 py-6" type="submit">Sign in</button>
-        </form>
-    </main>
 
+    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <main class="form-signin w-100 m-auto">
+            <form action="{{ path('app_discord_connect') }}" method="post">
+                <input type="hidden" name="token" value="{{ csrf_token('discord-auth') }}">
+                <button class="btn btn-primary w-100 py-6" type="submit">Sign in with Discord</button>
+            </form>
+        </main>
+        {% else %}
+
+        <div class="card" style="width: 30rem">
+            <img src="{{ asset('oauth.jpeg') }}" class="card-img-top">
+            <div class="card-body">
+                <p>Вы успешно зашли под пользователем: </p>
+                <h5 class="card-title">{{ app.user.username }}</h5>
+                <a class="btn btn-danger" href="{{ path('app_logout') }}">LogOut</a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
